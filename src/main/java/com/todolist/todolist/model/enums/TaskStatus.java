@@ -6,10 +6,11 @@ public enum TaskStatus {
     COMPLETE(3);
 
     private Integer code;
+
     private TaskStatus(Integer code) {
         this.code = code;
     }
-    
+
     public Integer getCode() {
         return code;
     }

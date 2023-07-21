@@ -21,8 +21,8 @@ public class Task implements Serializable {
     private String task;
     private Integer status;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy HH:mm:ss")
-    private Instant moment; 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT")
+    private Instant moment;
 
     public Task() {
     }
@@ -41,17 +41,18 @@ public class Task implements Serializable {
         this.priority = priority;
     }
 
-    public String getTasks() {
+    public String getTask() {
         return task;
     }
 
-    public void setTasks(String task) {
+    public void setTask(String task) {
         this.task = task;
     }
 
     public TaskStatus getStatus() {
         return TaskStatus.valueOf(status);
     }
+
     public void setStatus(TaskStatus status) {
         if (status != null) {
             this.status = status.getCode();

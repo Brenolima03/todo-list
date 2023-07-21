@@ -16,7 +16,7 @@ import com.todolist.todolist.services.TaskService;
 public class TaskController {
     @Autowired
     private TaskService service;
-    
+
     @GetMapping
     public ResponseEntity<List<Task>> findAll() {
         List<Task> list = service.findAll();
