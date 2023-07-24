@@ -19,9 +19,9 @@ public class TestConfig implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        Task task1 = new Task(1L, "Upload receipts", TaskStatus.NOT_ASSIGNED);
-        Task task2 = new Task(2L, "Clean the room", TaskStatus.INCOMPLETE);
+        Task task1 = new Task(1L, "Upload receipts", TaskStatus.NOT_ASSIGNED, 5);
+        Task task2 = new Task(2L, "Clean the room", TaskStatus.INCOMPLETE, 1);
 
-		taskRepository.saveAll(Arrays.asList(task1, task2));
+        taskRepository.saveAll(Arrays.asList(task1, task2));
     }
 }

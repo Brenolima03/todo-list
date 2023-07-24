@@ -11,42 +11,40 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "tb_tasks")
+@Table(name = "tb_descriptions")
 public class Task implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @Id
-    private Long priority;
-    private String task;
+    private Long id;
+    private String description;
     private Integer status;
+    private Integer priority;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy HH:mm:ss", timezone = "GMT")
     private Instant moment;
 
     public Task() {
     }
 
-    public Task(Long priority, String task, TaskStatus status) {
-        this.priority = priority;
-        this.task = task;
+    public Task(Long id, String description, TaskStatus status, Integer priority) {
+        this.id = id;
+        this.description = description;
         setStatus(status);
-    }
-
-    public Long getPriority() {
-        return priority;
-    }
-
-    public void setPriority(Long priority) {
         this.priority = priority;
     }
 
-    public String getTask() {
-        return task;
+    public Long getId() {
+        return id;
     }
 
-    public void setTask(String task) {
-        this.task = task;
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public TaskStatus getStatus() {
@@ -59,11 +57,19 @@ public class Task implements Serializable {
         }
     }
 
+    public Integer getPriority() {
+        return priority;
+    }
+
+    public void setPriority(Integer priority) {
+        this.priority = priority;
+    }
+
     @Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((priority == null) ? 0 : priority.hashCode());
+        result = prime * result + ((id == null) ? 0 : id.hashCode());
         return result;
     }
 
@@ -76,16 +82,16 @@ public class Task implements Serializable {
         if (getClass() != obj.getClass())
             return false;
         Task other = (Task) obj;
-        if (priority == null) {
-            if (other.priority != null)
+        if (id == null) {
+            if (other.id != null)
                 return false;
-        } else if (!priority.equals(other.priority))
+        } else if (!id.equals(other.id))
             return false;
         return true;
     }
 
     @Override
     public String toString() {
-        return "Tasks [priority=" + priority + ", task=" + task + "]";
+        return "Descriptions [id=" + id + ", description=" + description + "]";
     }
 }
